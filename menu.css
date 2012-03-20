@@ -2,9 +2,7 @@
 
 /* inline-block whitespace fix http://www.lifeathighroad.com/web-development/css-web-development/inline-block-whitespace-workaround/ */
 
-.gsrm-menu, .gsrm-menu li{
-    margin:0;padding:0;
-}
+
 
 .gsrm-menu{
     letter-spacing: -4px;
@@ -14,6 +12,7 @@
     list-style:none;
     padding: 1em 0;
     -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+    padding: 0 1em;
 }
 
 .gsrm-menu li{
@@ -26,6 +25,10 @@
 }
 /* Top menu styles */
 
+#menu-wrap{
+    position:relative;
+}
+
 #gsrm-top-menu li, 
 #gsrm-top-menu li a,
 #gsrm-top-menu a span{
@@ -35,6 +38,8 @@
 #gsrm-top-menu li{
     margin-bottom: 1em;
 }
+
+#gsrm-top-menu li a {padding: 1em .5em;}
 
 #gsrm-top-menu a span{
     font-size: .8em;
@@ -47,11 +52,12 @@
 #gsrm-top-menu .current-menu-item a,
 #gsrm-top-menu a:hover
 {
-    background-color: #ccc;
+    background-color: #333;
+    color: #fff;
 }
 
-/* Submenus styles */
-/* hide all submenus */
+/* submenus are hidden first */
+
 #gsrm-sub-menu{
     display:none;
 }
@@ -67,6 +73,11 @@
 }
 
 @media only screen and (min-width : 601px) {
+
+    #gsrm-top-menu{
+        padding-bottom:0;
+    }
+    
     #gsrm-top-menu li{
         width:auto;
         margin: 0 1em 0 0;
@@ -77,51 +88,39 @@
         display:none;
     }
 
-    /* reveal main submenu on target (rows) */
+    /* reveal main submenu */
     #gsrm-sub-menu{
         display:block;
-        background-color:  #ccc;
-        padding: 0 1em;
+        background-color: #333;
     }
     
-    /* align columns */
-    #gsrm-sub-menu > li{
+    #gsrm-sub-menu > li {
+        display:none;
+    }
+    #gsrm-sub-menu a{
+        color: #fff;
+    }
+    
+    #gsrm-sub-menu > .current-menu-item{
+        display:block;
+        padding-bottom: 1em;
+        position: relative;
+    }
+    #gsrm-sub-menu .current-menu-item > .sub-menu > li{
         display: inline-block;
         width: 24%;
         vertical-align:top;
     }
-
-    /* each menu item on its own row */
-
 
 }
 
 @media only screen and (min-width : 1025px) {
     
     #gsrm-top-menu {
-        background: #ddd;
+        
     }
     /* reveal link desc */
     #main-nav span{
         display:block;
     }
-}
-
-/* Submenu toggle CSS JS ONLY */
-#menu-wrap h2.toggle {
-  background-image: url(images/plus.png);
-  background-repeat: no-repeat;
-  padding-left: 2em;
-}
-
-#menu-wrap h2.expanded {
-  background-image: url(images/minus.png);
-}
-
-#menu-wrap h2.toggle a {
-  color: #000000;
-}
-
-#menu-wrap h2.toggle a:focus {
-  background: #993235;
 }

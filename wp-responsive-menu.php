@@ -46,7 +46,7 @@ function gsrm_responsive_menu_setup(){
     }
 
     else {
-        add_action( 'genesis_theme_settings_metaboxes', 'gsrm_remove_metaboxes' );        
+        //add_action( 'genesis_theme_settings_metaboxes', 'gsrm_remove_metaboxes' );        
         add_action('wp_enqueue_scripts', 'gsrm_load_scripts_styles');
         require_once 'menu.php';
     }    
@@ -63,7 +63,7 @@ function gsrm_install(){
     }
 }
 
-register_activation_hook( __FILE__, 'gsrm_genesis_layout_extras_activation_check' );
+//register_activation_hook( __FILE__, 'gsrm_genesis_layout_extras_activation_check' );
 /**
  * Checks for activated Genesis Framework and its minimum version before allowing plugin to activate
  *
@@ -95,7 +95,7 @@ function gsrm_genesis_layout_extras_activation_check() {
 
 
 /* For functions that need WordPress to be completely ready, init hook */
-add_action( 'init', 'gsrm_modify_genesis_settings' );
+//add_action( 'init', 'gsrm_modify_genesis_settings' );
 
 /**
  * Short description
@@ -109,16 +109,25 @@ add_action( 'init', 'gsrm_modify_genesis_settings' );
 function gsrm_modify_genesis_settings() {
     // remove Genesis metaboxes
     add_action( 'genesis_theme_settings_metaboxes', 'gsrm_remove_metaboxes' );
+         // disable primary and subnav
+        remove_action( 'genesis_after_header', 'genesis_do_nav' );
+        remove_action( 'genesis_after_header', 'genesis_do_subnav' );   
 }    
 
 function gsrm_remove_metaboxes( $_genesis_theme_settings_pagehook ) {
     //Remove navigation metaboxes
     remove_meta_box( 'genesis-theme-settings-nav', $_genesis_theme_settings_pagehook, 'main' );
+    
 }
 
 function gsrm_load_scripts_styles(){
+    
+    //CSS
     wp_enqueue_style('gsrm-css',  GSRM_URL . '/menu.css');
-    wp_enqueue_script('gsrm-js', GSRM_URL . '/gsrm.js',array('jquery'), false,true);
+    
+    //JS
+    wp_enqueue_script('breakpoints', GSRM_URL . '/breakpoints.js',array('jquery'), false,true);
+    wp_enqueue_script('gsrm-js', GSRM_URL . '/gsrm.js',array('jquery','breakpoints'), false,true);
 }
 
 /**
