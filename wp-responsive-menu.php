@@ -46,7 +46,7 @@ function gsrm_responsive_menu_setup(){
     }
 
     else {
-        //add_action( 'genesis_theme_settings_metaboxes', 'gsrm_remove_metaboxes' );        
+        add_action( 'genesis_theme_settings_metaboxes', 'gsrm_remove_metaboxes' );        
         add_action('wp_enqueue_scripts', 'gsrm_load_scripts_styles');
         require_once 'menu.php';
     }    
@@ -63,7 +63,7 @@ function gsrm_install(){
     }
 }
 
-//register_activation_hook( __FILE__, 'gsrm_genesis_layout_extras_activation_check' );
+register_activation_hook( __FILE__, 'gsrm_genesis_layout_extras_activation_check' );
 /**
  * Checks for activated Genesis Framework and its minimum version before allowing plugin to activate
  *
@@ -95,7 +95,7 @@ function gsrm_genesis_layout_extras_activation_check() {
 
 
 /* For functions that need WordPress to be completely ready, init hook */
-//add_action( 'init', 'gsrm_modify_genesis_settings' );
+add_action( 'init', 'gsrm_modify_genesis_settings' );
 
 /**
  * Short description
