@@ -3,7 +3,7 @@
 Plugin Name: Genesis Responsive menu
 Plugin URI: http://wpconsult.net/genesis-responsive-menu
 Description: Responsive Multilevel navigation menu because dropdowns suck.
-Version: 1.0
+Version: 0.1
 Author: Paul de Wouters
 Author URI: http://wpconsult.net
 License: GPLv2
