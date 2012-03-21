@@ -57,7 +57,7 @@ function gsrm_display_menu(){
 
         //display primary nav only top level items
 
-
+        echo '<div class="menu-wrap"><h2><a href="#">menu</a></h2>';
         wp_nav_menu( array(
             'container_class' => '',
             'menu_class' => 'gsrm-menu',
@@ -70,7 +70,7 @@ function gsrm_display_menu(){
             'depth' => 1,
             'walker' => new description_walker())
             );
-
+            echo '</div>';
 
         // display custom subnav menu based on sublevels of current top level menu item
         wp_nav_menu(array('theme_location' => 'primary','menu' => '', 'menu_class' => 'gsrm-menu','menu_id' => 'gsrm-sub-menu'));

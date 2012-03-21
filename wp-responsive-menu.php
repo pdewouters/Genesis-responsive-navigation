@@ -126,8 +126,8 @@ function gsrm_load_scripts_styles(){
     wp_enqueue_style('gsrm-css',  GSRM_URL . '/menu.css');
     
     //JS
-    wp_enqueue_script('breakpoints', GSRM_URL . '/breakpoints.js',array('jquery'), false,true);
-    wp_enqueue_script('gsrm-js', GSRM_URL . '/gsrm.js',array('jquery','breakpoints'), false,true);
+    //wp_enqueue_script('breakpoints', GSRM_URL . '/breakpoints.js',array('jquery'), false,true);
+    wp_enqueue_script('gsrm-js', GSRM_URL . '/gsrm.js',array('jquery'), false,true);
 }
 
 /**
