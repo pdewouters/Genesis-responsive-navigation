@@ -23,10 +23,7 @@ e.g.
 
 1. Upload the plugin folder to your wp-content/plugins directory, or install it through the admin interface.
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Place '<? add_action('genesis_after_header','child_do_gsrm_menu');
-function child_do_gsrm_menu(){
-    if(function_exists('gsrm_display_menu')) gsrm_display_menu();
-} ?>' in your functions.php file
+3. Add your custom menu to the Primary location
 
 == Frequently Asked Questions ==
 
