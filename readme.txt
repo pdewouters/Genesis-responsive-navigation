@@ -32,9 +32,7 @@ function child_do_gsrm_menu(){
 
 = Does it only work with Genesis? =
 
-At the moment, yes - but it should be easy to use with any theme.
-Just comment or remove these lines: 49,66,98 in wp-responsive-menu.php and make sure you have registered a 'primary' menu location.
-I'll add a settings page in the next version.
+At the moment, yes.
 
 = What about foo bar? =
 

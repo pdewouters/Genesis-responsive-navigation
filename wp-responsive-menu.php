@@ -3,7 +3,7 @@
 Plugin Name: Genesis Responsive menu
 Plugin URI: http://wpconsult.net/genesis-responsive-menu
 Description: Responsive Multilevel navigation menu because dropdowns suck.
-Version: 0.1
+Version: 0.2
 Author: Paul de Wouters
 Author URI: http://wpconsult.net
 License: GPLv2
@@ -49,6 +49,10 @@ function gsrm_responsive_menu_setup(){
         add_action( 'genesis_theme_settings_metaboxes', 'gsrm_remove_metaboxes' );        
         add_action('wp_enqueue_scripts', 'gsrm_load_scripts_styles');
         require_once 'menu.php';
+    add_filter( 'wp_nav_menu_args' , 'gsrm_add_menu_descriptions' );  
+       add_filter( 'genesis_do_nav', 'gsrm_nav_output', 10, 3 );
+    add_action('genesis_after_header', 'gsrm_do_subnav', 15);
+       
     }    
 }
 
@@ -108,10 +112,11 @@ add_action( 'init', 'gsrm_modify_genesis_settings' );
 */
 function gsrm_modify_genesis_settings() {
     // remove Genesis metaboxes
-    add_action( 'genesis_theme_settings_metaboxes', 'gsrm_remove_metaboxes' );
-         // disable primary and subnav
-        remove_action( 'genesis_after_header', 'genesis_do_nav' );
-        remove_action( 'genesis_after_header', 'genesis_do_subnav' );   
+    //add_action( 'genesis_theme_settings_metaboxes', 'gsrm_remove_metaboxes' );
+    // disable primary and subnav
+    //remove_action( 'genesis_after_header', 'genesis_do_nav' );
+   remove_action( 'genesis_after_header', 'genesis_do_subnav' );  
+
 }    
 
 function gsrm_remove_metaboxes( $_genesis_theme_settings_pagehook ) {

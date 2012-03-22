@@ -51,6 +51,7 @@ class description_walker extends Walker_Nav_Menu
             }
 }
 
+/*
 function gsrm_display_menu(){
 
     if ( has_nav_menu( 'primary' ) ) {
@@ -75,4 +76,29 @@ function gsrm_display_menu(){
         // display custom subnav menu based on sublevels of current top level menu item
         wp_nav_menu(array('theme_location' => 'primary','menu' => '', 'menu_class' => 'gsrm-menu','menu_id' => 'gsrm-sub-menu'));
     }
+}
+*/
+
+
+function gsrm_add_menu_descriptions( $args ) {
+	if ( $args['theme_location'] == 'primary' ) {	
+            $args['walker'] = new description_walker();
+            $args['depth'] = 1;
+            $args['menu_class'] = 'gsrm-menu';
+            $args['menu_id'] = 'gsrm-top-menu'; 
+	}
+
+	return $args;
+}
+
+function gsrm_do_subnav(){
+        wp_nav_menu(array('menu' => '', 'menu_class' => 'gsrm-menu','menu_id' => 'gsrm-sub-menu')); 
+}
+
+
+
+function gsrm_nav_output($nav_output, $nav, $args){
+$nav_output = sprintf( '<div id="gsrm-nav">%2$s%1$s%3$s</div>', $nav, genesis_structural_wrap( 'nav', 'open', 0 ), genesis_structural_wrap( 'nav', 'close', 0 ) );
+
+return $nav_output;
 }

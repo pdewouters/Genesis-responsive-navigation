@@ -3,8 +3,8 @@
         $('#gsrm-sub-menu > .current-menu-item').slideToggle();
         e.preventDefault();
     });
-    
-    $('div.menu-wrap h2 a').on('click', function(e){
+    $('div#gsrm-nav div.wrap').prepend('<h2><a href="#">menu</a></h2>');
+    $('div#gsrm-nav h2 a').on('click', function(e){
         $('ul#gsrm-top-menu').slideToggle();
         e.preventDefault();
     });    
